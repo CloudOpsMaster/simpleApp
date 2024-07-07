@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спецефекти з JavaScript</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            animation: colorChange 5s infinite;
+        }
+        @keyframes colorChange {
+            0% { color: #ff0000; }
+            25% { color: #00ff00; }
+            50% { color: #0000ff; }
+            75% { color: #ff00ff; }
+            100% { color: #ff0000; }
+        }
+        img {
+            max-width: 300px;
+            max-height: 300px;
+            border: 5px solid white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+        img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="dynamicText">My simple application</h1>
+    <img src="simple.webp" alt="Centered Image">
+    <script>
+        const textElement = document.getElementById('dynamicText');
+        const textArray = ["Hello", "World"];
+        let index = 0;
+        
+        function changeText() {
+            textElement.textContent = textArray[index];
+            index = (index + 1) % textArray.length;
+        }
+        
+        setInterval(changeText, 2000);
+    </script>
+</body>
+</html>
